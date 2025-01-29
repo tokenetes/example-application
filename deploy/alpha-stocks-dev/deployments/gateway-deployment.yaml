@@ -16,7 +16,7 @@ spec:
       serviceAccountName: gateway-service-account
       containers:
         - env:
-            - name: TRATTERIA_URL
+            - name: TOKENETES_URL
               value: https://tokenetes:443
             - name: ORDER_SERVICE_URL
               value: http://order:8090
@@ -34,7 +34,7 @@ spec:
               value: http://dex:5556/dex
             - name: SPIFFE_ENDPOINT_SOCKET
               value: unix:///run/spire/sockets/agent.sock
-            - name: TRATTERIA_SPIFFE_ID
+            - name: TOKENETES_SPIFFE_ID
               value: spiffe://dev.alphastocks.com/tokenetes
             - name: ORDER_SERVICE_SPIFFE_ID
               value: spiffe://dev.alphastocks.com/order
