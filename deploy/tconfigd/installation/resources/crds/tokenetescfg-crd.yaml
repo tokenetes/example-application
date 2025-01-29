@@ -1,16 +1,16 @@
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
-  name: tratteriaconfigs.tratteria.io
+  name: tokenetesconfigs.tokenetes.io
 spec:
-  group: tratteria.io
+  group: tokenetes.io
   names:
-    kind: TratteriaConfig
-    plural: tratteriaconfigs
-    singular: tratteriaconfig
-    listKind: TratteriaConfigList
+    kind: TokenetesConfig
+    plural: tokenetesconfigs
+    singular: tokenetesconfig
+    listKind: TokenetesConfigList
     shortNames:
-      - tratteriacfg
+      - tokenetescfg
   scope: Namespaced
   versions:
     - name: v1alpha1
@@ -102,7 +102,7 @@ spec:
         - name: "Status"
           type: "string"
           jsonPath: ".status.status"
-          description: "Current status of the tratteriaConfig."
+          description: "Current status of the tokenetesConfig."
         - name: "Age"
           type: "date"
           jsonPath: ".metadata.creationTimestamp"

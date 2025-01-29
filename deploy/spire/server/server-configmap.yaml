@@ -50,7 +50,7 @@ data:
 
       Notifier "k8sbundle" {
         plugin_data {
-          webhook_label = "tratteria.io/webhook"
+          webhook_label = "tokenetes.io/webhook"
         }
       }
     }

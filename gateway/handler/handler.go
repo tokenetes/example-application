@@ -29,8 +29,8 @@ func SetupRoutes(cfg *config.GatewayConfig, oauth2Config oauth2.Config, oidcProv
 	stocksProxy := proxy.NewReverseProxy(cfg.StocksServiceURL, logger)
 	orderProxy := proxy.NewReverseProxy(cfg.OrderServiceURL, logger)
 
-	router.PathPrefix("/api/stocks").Handler(middleware.GetMiddleware(oauth2Config, oidcProvider, cfg.SpiffeIDs.Stocks, spiffeJwtSource, x509Source, cfg.TratteriaURL, cfg.SpiffeIDs.Tratteria, cfg.TraTToggle, logger)(stocksProxy))
-	router.PathPrefix("/api/order").Handler(middleware.GetMiddleware(oauth2Config, oidcProvider, cfg.SpiffeIDs.Order, spiffeJwtSource, x509Source, cfg.TratteriaURL, cfg.SpiffeIDs.Tratteria, cfg.TraTToggle, logger)(orderProxy))
+	router.PathPrefix("/api/stocks").Handler(middleware.GetMiddleware(oauth2Config, oidcProvider, cfg.SpiffeIDs.Stocks, spiffeJwtSource, x509Source, cfg.TokenetesURL, cfg.SpiffeIDs.Tokenetes, cfg.TraTToggle, logger)(stocksProxy))
+	router.PathPrefix("/api/order").Handler(middleware.GetMiddleware(oauth2Config, oidcProvider, cfg.SpiffeIDs.Order, spiffeJwtSource, x509Source, cfg.TokenetesURL, cfg.SpiffeIDs.Tokenetes, cfg.TraTToggle, logger)(orderProxy))
 
 	router.HandleFunc("/api/logout", func(w http.ResponseWriter, r *http.Request) {
 		handleLogout(w)

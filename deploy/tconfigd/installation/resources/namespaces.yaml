@@ -4,4 +4,4 @@ items:
 - apiVersion: v1
   kind: Namespace
   metadata:
-    name: tratteria-system
+    name: tokenetes-system

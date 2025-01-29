@@ -5,7 +5,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: tconfigd-service-account
-    namespace: tratteria-system
+    namespace: tokenetes-system
 roleRef:
   kind: ClusterRole
   name: tconfigd-service-account-role

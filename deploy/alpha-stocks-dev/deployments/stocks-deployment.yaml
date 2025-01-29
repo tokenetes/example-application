@@ -11,8 +11,8 @@ spec:
   template:
     metadata:
       annotations:
-        tratteria/inject-sidecar: "true"
-        tratteria/agent-mode: "delegation"
+        tokenetes/inject-sidecar: "true"
+        tokenetes/agent-mode: "delegation"
       labels:
         app: stocks
     spec:
@@ -33,7 +33,7 @@ spec:
               value: http://localhost:9030/verify-trat
             - name: ENABLE_TRATS
               value: "${ENABLE_TRATS}"
-          image: ghcr.io/tratteria/example-application/stocks:latest
+          image: ghcr.io/tokenetes/example-application/stocks:latest
           name: stocks
           ports:
             - containerPort: 8070

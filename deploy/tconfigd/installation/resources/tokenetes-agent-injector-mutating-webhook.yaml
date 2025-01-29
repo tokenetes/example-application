@@ -1,16 +1,16 @@
 apiVersion: admissionregistration.k8s.io/v1
 kind: MutatingWebhookConfiguration
 metadata:
-  name: tratteria-agent-injector
+  name: tokenetes-agent-injector
   labels:
-    tratteria.io/webhook: "true"
+    tokenetes.io/webhook: "true"
 webhooks:
-  - name: tratteria-agent-injector.tratteria.io
+  - name: tokenetes-agent-injector.tokenetes.io
     clientConfig:
       service:
         name: tconfigd
-        namespace: tratteria-system
-        path: "/inject-tratteria-agents"
+        namespace: tokenetes-system
+        path: "/inject-tokenetes-agents"
       caBundle: 
     rules:
       - operations: ["CREATE"]
@@ -22,4 +22,4 @@ webhooks:
     timeoutSeconds: 5
     namespaceSelector:
       matchLabels:
-        tratteria-enabled: "true"
+        tokenetes-enabled: "true"

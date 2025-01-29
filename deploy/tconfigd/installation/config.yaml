@@ -1,5 +1,5 @@
 enableTratInterception: "true" # Enable or disable incoming requests interception for TraT verification
 spireAgentHostDir: "/run/spire/sockets" # Host directory where the SPIRE agent's socket resides; update this if different in your environment
-tratteriaSpiffeId: "spiffe://dev.alphastocks.com/tratteria" # Replace "trust-domain" with your trust domain
-agentApiPort: "9030" # Port number for the tratteria agent APIs
-agentInterceptorPort: "9050" # Port number for the tratteria agent incoming requests interceptor
+tokenetesSpiffeId: "spiffe://dev.alphastocks.com/tokenetes" # Replace "trust-domain" with your trust domain
+agentApiPort: "9030" # Port number for the tokenetes agent APIs
+agentInterceptorPort: "9050" # Port number for the tokenetes agent incoming requests interceptor

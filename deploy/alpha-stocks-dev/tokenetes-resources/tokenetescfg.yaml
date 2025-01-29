@@ -1,11 +1,11 @@
-apiVersion: tratteria.io/v1alpha1
-kind: TratteriaConfig
+apiVersion: tokenetes.io/v1alpha1
+kind: TokenetesConfig
 metadata:
-  name: alpha-stocks-tratteriacfg
+  name: alpha-stocks-tokenetescfg
   namespace: alpha-stocks-dev
 spec:
   token:
-    issuer: "https://alphastocks.com/tratteria"
+    issuer: "https://alphastocks.com/tokenetes"
     audience: "https://alphastocks.com/"
     lifeTime: "15s"
   subjectTokens:

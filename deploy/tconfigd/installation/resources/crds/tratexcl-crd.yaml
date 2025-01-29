@@ -1,9 +1,9 @@
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
-  name: tratexclusions.tratteria.io
+  name: tratexclusions.tokenetes.io
 spec:
-  group: tratteria.io
+  group: tokenetes.io
   names:
     kind: TraTExclusion
     plural: tratexclusions

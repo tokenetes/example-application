@@ -1,13 +1,13 @@
 # Alpha Stocks
 
-Alpha Stocks is a sample application that implements transaction tokens(TraTs) using Tratteria. It runs on a Kubernetes cluster and can serve as a reference for integrating Tratteria into other projects. The application has the following architecture:
+Alpha Stocks is a sample application that implements transaction tokens(TraTs) using Tokenetes. It runs on a Kubernetes cluster and can serve as a reference for integrating Tokenetes into other projects. The application has the following architecture:
 
 ~~~
                                     ╔════════════════════════╗                                                              
                                     ║                        ║                                                              
                                     ║                        ║                                                              
                                     ║                        ║                                                              
-                                    ║ Tratteria (Transaction ║                                                              
+                                    ║ Tokenetes (Transaction ║                                                              
                                     ║    Tokens Service)     ║                                                              
                                     ║                        ║                                                              
                                     ║                        ║                                                              
@@ -65,7 +65,7 @@ Alpha Stocks is a sample application that implements transaction tokens(TraTs) u
                                     └────────────────────────┘                                                              
 ~~~
 
-As shown in the diagram above, the API Gateway integrates with the Tratteria service to obtain TraTs that it can use to assure identity and context in its calls downstream, to the Order and Stocks services. The Order Service also calls the Stocks Service and passes the TraT it received from the API Gateway to the Stocks Service. Because TraTs can be passed between downstream services, they can assure identity and call context in arbitrarily deep call chains. The short-lived nature of TraTs makes them relatively immune to replay attacks (unless the replay happens really quickly, and the replay is exactly the same as the information in the TraT).
+As shown in the diagram above, the API Gateway integrates with the Tokenetes service to obtain TraTs that it can use to assure identity and context in its calls downstream, to the Order and Stocks services. The Order Service also calls the Stocks Service and passes the TraT it received from the API Gateway to the Stocks Service. Because TraTs can be passed between downstream services, they can assure identity and call context in arbitrarily deep call chains. The short-lived nature of TraTs makes them relatively immune to replay attacks (unless the replay happens really quickly, and the replay is exactly the same as the information in the TraT).
 
 ## How to Run
 
@@ -128,8 +128,8 @@ npm start
 
 For more detailed instructions refer to the service-specific README files in their respective directories.
 
-## Tratteria Documentation
-For detailed documentation and setup guides of tratteria please visit tratteria official documentation page: [tratteria.io](https://tratteria.io)
+## Tokenetes Documentation
+For detailed documentation and setup guides of tokenetes please visit tokenetes official documentation page: [tokenetes.io](https://tokenetes.io)
 
-## Contribute to Tratteria
+## Contribute to Tokenetes
 Contributions to the project are welcome, including feature enhancements, bug fixes, and documentation improvements.

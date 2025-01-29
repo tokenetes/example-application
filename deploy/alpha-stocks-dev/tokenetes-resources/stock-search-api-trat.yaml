@@ -1,22 +1,22 @@
-apiVersion: tratteria.io/v1alpha1
+apiVersion: tokenetes.io/v1alpha1
 kind: TraT
 metadata:
-  name: stock-details-api-trat
+  name: stock-search-api-trat
   namespace: alpha-stocks-dev
 spec:
-  path: "/api/stocks/details/{#stockId}"
+  path: "/api/stocks/search"
   method: "GET"
-  purp: stock-details
+  purp: stock-search
   azdMapping:
-    stockId:
+    query:
       required: true
-      value: "${stockId}"
+      value: "${queryParameters.query}"
   services:
     - name: stocks
   accessEvaluation:
     subject:
       id: "${subject_token.email}"
     action:
-      name: "stock-details"
+      name: "stock-search"
     resource:
-      stockId: "${stockId}"
+      query: "${queryParameters.query}"

@@ -6,4 +6,4 @@ items:
   metadata:
     name: alpha-stocks-dev
     labels:
-      tratteria-enabled: "${ENABLE_TRATS}"
+      tokenetes-enabled: "${ENABLE_TRATS}"

@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: tconfigd
-  namespace: tratteria-system
+  namespace: tokenetes-system
 spec:
   replicas: 1
   selector:
@@ -12,12 +12,12 @@ spec:
     metadata:
       labels:
         app: tconfigd
-      namespace: tratteria-system
+      namespace: tokenetes-system
     spec:
       dnsPolicy: ClusterFirstWithHostNet
       serviceAccountName: tconfigd-service-account
       containers:
-        - image: ghcr.io/tratteria/tconfigd:latest
+        - image: ghcr.io/tokenetes/tconfigd:latest
           name: tconfigd
           args: ["/etc/tconfigd/config/config.yaml"]
           env:

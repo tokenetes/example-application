@@ -161,10 +161,10 @@ func getRequestDetails(r *http.Request) (*RequestDetails, error) {
 	return details, nil
 }
 
-func GetTxnTokenMiddleware(txnTokenServiceURL *url.URL, x509Source *workloadapi.X509Source, tratteriaSpiffeID spiffeid.ID, logger *zap.Logger) func(http.Handler) http.Handler {
-	tratteriaMtlsClient := http.Client{
+func GetTxnTokenMiddleware(txnTokenServiceURL *url.URL, x509Source *workloadapi.X509Source, tokenetesSpiffeID spiffeid.ID, logger *zap.Logger) func(http.Handler) http.Handler {
+	tokenetesMtlsClient := http.Client{
 		Transport: &http.Transport{
-			TLSClientConfig: tlsconfig.MTLSClientConfig(x509Source, x509Source, tlsconfig.AuthorizeID(tratteriaSpiffeID)),
+			TLSClientConfig: tlsconfig.MTLSClientConfig(x509Source, x509Source, tlsconfig.AuthorizeID(tokenetesSpiffeID)),
 		},
 	}
 
@@ -235,9 +235,9 @@ func GetTxnTokenMiddleware(txnTokenServiceURL *url.URL, x509Source *workloadapi.
 
 			req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
 
-			resp, err := tratteriaMtlsClient.Do(req)
+			resp, err := tokenetesMtlsClient.Do(req)
 			if err != nil {
-				logger.Error("Failed to request txn token from tratteria.", zap.Error(err))
+				logger.Error("Failed to request txn token from tokenetes.", zap.Error(err))
 				http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 
 				return
@@ -245,7 +245,7 @@ func GetTxnTokenMiddleware(txnTokenServiceURL *url.URL, x509Source *workloadapi.
 			defer resp.Body.Close()
 
 			if resp.StatusCode != http.StatusOK {
-				logger.Error("Received non-ok http status from tratteria service.", zap.Int("status", resp.StatusCode))
+				logger.Error("Received non-ok http status from tokenetes service.", zap.Int("status", resp.StatusCode))
 
 				if resp.StatusCode == http.StatusForbidden {
 					http.Error(w, "Access Forbidden", http.StatusForbidden)
@@ -258,7 +258,7 @@ func GetTxnTokenMiddleware(txnTokenServiceURL *url.URL, x509Source *workloadapi.
 
 			body, err := io.ReadAll(resp.Body)
 			if err != nil {
-				logger.Error("Failed to read the response from tratteria", zap.Error(err))
+				logger.Error("Failed to read the response from tokenetes", zap.Error(err))
 				http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 				return
 			}
@@ -279,15 +279,13 @@ func GetTxnTokenMiddleware(txnTokenServiceURL *url.URL, x509Source *workloadapi.
 			}
 
 			if token.AccessToken == "" {
-				logger.Error("Received empty access token from tratteria.")
+				logger.Error("Received empty access token from tokenetes.")
 				http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 
 				return
 			}
 
 			r.Header.Set("Txn-Token", token.AccessToken)
-
-
 
 			// ⚠️ Setting the "Txn-Token" header in the response as well. This is done only for this example application to demonstrate
 			// TraTs generation in the application's UI interactively. There is no reason to do this in a real application, and it should not be

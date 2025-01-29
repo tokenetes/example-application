@@ -17,7 +17,7 @@ spec:
       containers:
         - env:
             - name: TRATTERIA_URL
-              value: https://tratteria:443
+              value: https://tokenetes:443
             - name: ORDER_SERVICE_URL
               value: http://order:8090
             - name: STOCKS_SERVICE_URL
@@ -35,14 +35,14 @@ spec:
             - name: SPIFFE_ENDPOINT_SOCKET
               value: unix:///run/spire/sockets/agent.sock
             - name: TRATTERIA_SPIFFE_ID
-              value: spiffe://dev.alphastocks.com/tratteria
+              value: spiffe://dev.alphastocks.com/tokenetes
             - name: ORDER_SERVICE_SPIFFE_ID
               value: spiffe://dev.alphastocks.com/order
             - name: STOCKS_SERVICE_SPIFFE_ID
               value: spiffe://dev.alphastocks.com/stocks
             - name: ENABLE_TRATS
               value: "${ENABLE_TRATS}"
-          image: ghcr.io/tratteria/example-application/gateway:latest
+          image: ghcr.io/tokenetes/example-application/gateway:latest
           name: gateway
           ports:
             - containerPort: 30000
