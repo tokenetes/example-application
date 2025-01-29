@@ -33,11 +33,11 @@ type GatewayConfig struct {
 
 func GetAppConfig() *GatewayConfig {
 	return &GatewayConfig{
-		TokenetesURL:     parseURL(getEnv("TRATTERIA_URL")),
+		TokenetesURL:     parseURL(getEnv("TOKENETES_URL")),
 		StocksServiceURL: parseURL(getEnv("STOCKS_SERVICE_URL")),
 		OrderServiceURL:  parseURL(getEnv("ORDER_SERVICE_URL")),
 		SpiffeIDs: &spiffeIDs{
-			Tokenetes: spiffeid.RequireFromString(getEnv("TRATTERIA_SPIFFE_ID")),
+			Tokenetes: spiffeid.RequireFromString(getEnv("TOKENETES_SPIFFE_ID")),
 			Order:     spiffeid.RequireFromString(getEnv("ORDER_SERVICE_SPIFFE_ID")),
 			Stocks:    spiffeid.RequireFromString(getEnv("STOCKS_SERVICE_SPIFFE_ID")),
 		},
