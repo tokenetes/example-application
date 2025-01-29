@@ -17,7 +17,7 @@ tconfigd utilizes SPIRE's built-in [k8sbundle plugin](https://github.com/spiffe/
 ```
 Notifier "k8sbundle" {
     plugin_data {
-        webhook_label = "tratteria.io/webhook"
+        webhook_label = "tokenetes.io/webhook"
     }
 }
 ```
@@ -32,30 +32,30 @@ For the above to operate, you need to add the following permissions to the SPIRE
 
 #### 2. Registering tconfigd
 
-Register tconfigd to your running SPIRE. tconfigd operates within the `tratteria-system` namespace and uses the `tconfigd-service-account` service account. Below is a sample registration command:
+Register tconfigd to your running SPIRE. tconfigd operates within the `tokenetes-system` namespace and uses the `tconfigd-service-account` service account. Below is a sample registration command:
 
 ```bash
 kubectl exec -n spire spire-server-0 -- \
-    /opt/spire/bin/spire-server entry create --dns tconfigd.tratteria-system.svc \
+    /opt/spire/bin/spire-server entry create --dns tconfigd.tokenetes-system.svc \
     -spiffeID spiffe://[your-trust-domain]/tconfigd \
     -parentID spiffe://[your-trust-domain]/ns/spire/sa/spire-agent \
-    -selector k8s:ns:tratteria-system \
+    -selector k8s:ns:tokenetes-system \
     -selector k8s:sa:tconfigd-service-account
 ```
 
-Include the `--dns` option with the value `tconfigd.tratteria-system.svc` in the registration command; it is necessary for tconfigd operation.
+Include the `--dns` option with the value `tconfigd.tokenetes-system.svc` in the registration command; it is necessary for tconfigd operation.
 
-#### 2. Registering tratteria service
+#### 2. Registering tokenetes service
 
-Register [tratteria service](https://github.com/tratteria/tratteria), an open source Transaction Tokens (TraTs) Service, to your running SPIRE. tratteria operates within your application namespace and uses the `tratteria-service-account` service account. Below is a sample registration command:
+Register [tokenetes service](https://github.com/tokenetes/tokenetes), an open source Transaction Tokens (TraTs) Service, to your running SPIRE. tokenetes operates within your application namespace and uses the `tokenetes-service-account` service account. Below is a sample registration command:
 
 ```bash
 kubectl exec -n spire spire-server-0 -- \
     /opt/spire/bin/spire-server entry create \
-    -spiffeID spiffe://[your-trust-domain]/tratteria \
+    -spiffeID spiffe://[your-trust-domain]/tokenetes \
     -parentID spiffe://[your-trust-domain]/ns/spire/sa/spire-agent \
     -selector k8s:ns:[your-namespace] \
-    -selector k8s:sa:tratteria-service-account
+    -selector k8s:sa:tokenetes-service-account
 ```
 
 #### 3. Registering Microservices
@@ -64,7 +64,7 @@ Ensure all microservice that need to verify trats are registered to your running
 
 <br>
 
-For a reference implementation on setting up SPIRE for tconfigd, please check the example application's [spire installation](https://github.com/tratteria/example-application/tree/main/deploy/spire).
+For a reference implementation on setting up SPIRE for tconfigd, please check the example application's [spire installation](https://github.com/tokenetes/example-application/tree/main/deploy/spire).
 
 
 ## Installation Steps
@@ -73,7 +73,7 @@ For a reference implementation on setting up SPIRE for tconfigd, please check th
 Clone the tconfigd repository and navigate to the installation directory:
 
 ```bash
-git clone https://github.com/tratteria/tconfigd.git
+git clone https://github.com/tokenetes/tconfigd.git
 ```
 
 ```bash
@@ -89,15 +89,15 @@ Update the `config.yaml` file to match your specific deployment settings:
 
 - **Configure the settings as described below:**
   - `enableTratInterception`: "`true`" 
-    - **Description**: Set to "`true`" to enable interception of incoming requests for TraT verification. Set to "`false`" if using the [delegation method](https://github.com/tratteria/tratteria-agent?tab=readme-ov-file#operating-modes) for TraT verification.
+    - **Description**: Set to "`true`" to enable interception of incoming requests for TraT verification. Set to "`false`" if using the [delegation method](https://github.com/tokenetes/tokenetes-agent?tab=readme-ov-file#operating-modes) for TraT verification.
   - `spireAgentHostDir`: `"/run/spire/sockets"`
     - **Description**: Host directory where the SPIRE agent's socket resides. Update this value if it is different in your SPIRE installation.
-  - `tratteriaSpiffeId`: `"spiffe://[your-trust-domain]/tratteria"`
-    - **Description**: SPIFFE ID used to register [tratteria service](https://github.com/tratteria/tratteria), an open source Transaction Tokens (TraTs) Service.
+  - `tokenetesSpiffeId`: `"spiffe://[your-trust-domain]/tokenetes"`
+    - **Description**: SPIFFE ID used to register [tokenetes service](https://github.com/tokenetes/tokenetes), an open source Transaction Tokens (TraTs) Service.
   - `agentApiPort`: "`9030`"
-    - **Description**: Port number for the tratteria agent APIs. Do not change this unless you have some specific need.
+    - **Description**: Port number for the tokenetes agent APIs. Do not change this unless you have some specific need.
   - `agentInterceptorPort`: "`9050`"
-    - **Description**: The port number for the tratteria agent's incoming requests interceptor. Do not change this unless you have some specific need.
+    - **Description**: The port number for the tokenetes agent's incoming requests interceptor. Do not change this unless you have some specific need.
 
 
 ### 4. Run the Installation Script
@@ -110,13 +110,13 @@ Deploy tconfigd to your Kubernetes cluster by running the installation script:
 
 ### 5. Verification
 
-Verify the installation by checking the status of the tconfigd pod in the `tratteria-system` namespace. Use the following command to view the pod:
+Verify the installation by checking the status of the tconfigd pod in the `tokenetes-system` namespace. Use the following command to view the pod:
 
 ```bash
-kubectl get pods -n tratteria-system
+kubectl get pods -n tokenetes-system
 ```
 
 <br>
 
-For a practical example of installing tconfigd on a microservice application, refer to the example-application's [deployment resources](https://github.com/tratteria/example-application/tree/main/deploy).
+For a practical example of installing tconfigd on a microservice application, refer to the example-application's [deployment resources](https://github.com/tokenetes/example-application/tree/main/deploy).
 

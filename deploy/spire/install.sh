@@ -73,14 +73,14 @@ kubectl exec -n spire spire-server-0 -- \
 
 kubectl exec -n spire spire-server-0 -- \
     /opt/spire/bin/spire-server entry create \
-    -spiffeID spiffe://dev.alphastocks.com/tratteria \
+    -spiffeID spiffe://dev.alphastocks.com/tokenetes \
     -parentID spiffe://dev.alphastocks.com/ns/spire/sa/spire-agent \
     -selector k8s:ns:alpha-stocks-dev \
-    -selector k8s:sa:tratteria-service-account
+    -selector k8s:sa:tokenetes-service-account
 
 kubectl exec -n spire spire-server-0 -- \
-    /opt/spire/bin/spire-server entry create --dns tconfigd.tratteria-system.svc\
+    /opt/spire/bin/spire-server entry create --dns tconfigd.tokenetes-system.svc\
     -spiffeID spiffe://dev.alphastocks.com/tconfigd \
     -parentID spiffe://dev.alphastocks.com/ns/spire/sa/spire-agent \
-    -selector k8s:ns:tratteria-system \
+    -selector k8s:ns:tokenetes-system \
     -selector k8s:sa:tconfigd-service-account

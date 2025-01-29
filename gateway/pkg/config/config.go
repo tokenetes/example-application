@@ -18,13 +18,13 @@ const OIDC_PROVIDER_INITILIZATION_MAX_RETRIES = 5
 const JWTSourceTimeout = 15 * time.Second
 
 type spiffeIDs struct {
-	Tratteria spiffeid.ID
+	Tokenetes spiffeid.ID
 	Order     spiffeid.ID
 	Stocks    spiffeid.ID
 }
 
 type GatewayConfig struct {
-	TratteriaURL     *url.URL
+	TokenetesURL     *url.URL
 	StocksServiceURL *url.URL
 	OrderServiceURL  *url.URL
 	SpiffeIDs        *spiffeIDs
@@ -33,11 +33,11 @@ type GatewayConfig struct {
 
 func GetAppConfig() *GatewayConfig {
 	return &GatewayConfig{
-		TratteriaURL:     parseURL(getEnv("TRATTERIA_URL")),
+		TokenetesURL:     parseURL(getEnv("TRATTERIA_URL")),
 		StocksServiceURL: parseURL(getEnv("STOCKS_SERVICE_URL")),
 		OrderServiceURL:  parseURL(getEnv("ORDER_SERVICE_URL")),
 		SpiffeIDs: &spiffeIDs{
-			Tratteria: spiffeid.RequireFromString(getEnv("TRATTERIA_SPIFFE_ID")),
+			Tokenetes: spiffeid.RequireFromString(getEnv("TRATTERIA_SPIFFE_ID")),
 			Order:     spiffeid.RequireFromString(getEnv("ORDER_SERVICE_SPIFFE_ID")),
 			Stocks:    spiffeid.RequireFromString(getEnv("STOCKS_SERVICE_SPIFFE_ID")),
 		},

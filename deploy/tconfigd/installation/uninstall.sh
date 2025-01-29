@@ -30,11 +30,11 @@ delete_k8s_resource() {
 
 info "Uninstalling tconfigd..."
 
-delete_k8s_resource namespace tratteria-system
+delete_k8s_resource namespace tokenetes-system
 delete_k8s_resource clusterrole tconfigd-service-account-role
 delete_k8s_resource clusterrolebinding tconfigd-service-account-binding
-delete_k8s_resource mutatingwebhookconfiguration tratteria-agent-injector
-delete_k8s_resource crd trats.tratteria.io
-delete_k8s_resource crd tratteriaconfigs.tratteria.io
+delete_k8s_resource mutatingwebhookconfiguration tokenetes-agent-injector
+delete_k8s_resource crd trats.tokenetes.io
+delete_k8s_resource crd tokenetesconfigs.tokenetes.io
 
 success "tconfigd uninstalled successfully."

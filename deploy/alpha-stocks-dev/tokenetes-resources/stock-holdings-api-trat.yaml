@@ -1,4 +1,4 @@
-apiVersion: tratteria.io/v1alpha1
+apiVersion: tokenetes.io/v1alpha1
 kind: TraT
 metadata:
   name: stock-holdings-api-trat

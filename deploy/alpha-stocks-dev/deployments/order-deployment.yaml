@@ -11,8 +11,8 @@ spec:
   template:
     metadata:
       annotations:
-        tratteria/inject-sidecar: "true"
-        tratteria/service-port: "8090"
+        tokenetes/inject-sidecar: "true"
+        tokenetes/service-port: "8090"
       labels:
         app: order
     spec:
@@ -31,7 +31,7 @@ spec:
               value: spiffe://dev.alphastocks.com/order
             - name: STOCKS_SERVICE_SPIFFE_ID
               value: spiffe://dev.alphastocks.com/stocks
-          image: ghcr.io/tratteria/example-application/order:latest
+          image: ghcr.io/tokenetes/example-application/order:latest
           name: order
           ports:
             - containerPort: 8090
