@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/SGNL-ai/TraTs-Demo-Svcs/gateway/pkg/common"
-	"github.com/coreos/go-oidc"
+	"github.com/coreos/go-oidc/v3/oidc"
 	"golang.org/x/oauth2"
 
 	"go.uber.org/zap"

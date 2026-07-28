@@ -8,6 +8,7 @@ import { Subscription } from 'rxjs';
     <app-auth *ngIf="!isAuthenticated"></app-auth>
     <app-search *ngIf="isAuthenticated"></app-search>
   `,
+  standalone: false
 })
 export class HomeComponent implements OnDestroy {
   isAuthenticated: boolean = this.authService.isLoggedIn();

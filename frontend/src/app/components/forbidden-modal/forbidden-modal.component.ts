@@ -4,7 +4,8 @@ import { ModalService } from '../../services/modal.service';
 @Component({
   selector: 'app-forbidden-modal',
   templateUrl: './forbidden-modal.component.html',
-  styleUrls: ['./forbidden-modal.component.css']
+  styleUrls: ['./forbidden-modal.component.css'],
+  standalone: false
 })
 export class ForbiddenModalComponent implements OnInit {
   message: string = '';
