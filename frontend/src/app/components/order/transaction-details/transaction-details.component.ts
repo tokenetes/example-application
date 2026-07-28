@@ -5,7 +5,8 @@ import { TransactionDetails } from '../../../models/transaction-details.model';
 @Component({
   selector: 'app-transaction-details',
   templateUrl: './transaction-details.component.html',
-  styleUrls: ['./transaction-details.component.css']
+  styleUrls: ['./transaction-details.component.css'],
+  standalone: false
 })
 export class TransactionDetailsComponent implements OnInit {
   transactionDetails: TransactionDetails | null = null;

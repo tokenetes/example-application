@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/coreos/go-oidc"
+	"github.com/coreos/go-oidc/v3/oidc"
 	"github.com/spiffe/go-spiffe/v2/spiffeid"
 	"go.uber.org/zap"
 	"golang.org/x/oauth2"

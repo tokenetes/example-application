@@ -11,7 +11,8 @@ const AUDIT_INTERVAL_MS = 500;
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+  styleUrls: ['./search.component.css'],
+  standalone: false
 })
 export class SearchComponent implements OnDestroy {
   searchResult: SearchItem[] = [];
