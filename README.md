@@ -83,6 +83,18 @@ The application SPIRE installation is set up with "docker-desktop" as the cluste
 
 - Review and modify other settings as needed to align with your cluster requirements.
 
+### Building Docker Images (Corporate Proxy)
+
+If your environment uses a TLS-inspecting proxy (e.g. Zscaler), Docker builds will fail during `go mod download` unless the proxy's CA certificate is trusted. Pass it as a BuildKit secret — it is never written into the image or committed to the repo:
+
+```bash
+docker build --secret id=ca_cert,src=/path/to/corporate-ca.pem -t gateway ./gateway
+docker build --secret id=ca_cert,src=/path/to/corporate-ca.pem -t order ./order
+docker build --secret id=ca_cert,src=/path/to/corporate-ca.pem -t stocks ./stocks
+```
+
+If you are not behind a TLS-inspecting proxy, omit the `--secret` flag and build normally.
+
 ### Deploying Services
 
 Navigate to the `deploy` directory and run the below command to deploy the services:
