@@ -1,6 +1,6 @@
 module github.com/SGNL-ai/TraTs-Demo-Svcs/stocks
 
-go 1.25.0
+go 1.26.4
 
 require (
 	github.com/golang-migrate/migrate/v4 v4.17.0
