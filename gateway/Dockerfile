@@ -1,5 +1,5 @@
 # TODO: Use a multi-stage build process to reduce the final image size.
-FROM --platform=$BUILDPLATFORM golang:1.24.0 AS builder
+FROM --platform=$BUILDPLATFORM golang:1.26.4 AS builder
 
 WORKDIR /app
 
