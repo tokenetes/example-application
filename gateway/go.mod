@@ -1,6 +1,6 @@
 module github.com/SGNL-ai/TraTs-Demo-Svcs/gateway
 
-go 1.25.0
+go 1.26.5
 
 require (
 	github.com/coreos/go-oidc v2.2.1+incompatible
